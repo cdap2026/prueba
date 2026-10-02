@@ -1,0 +1,68 @@
+:root {
+  --green: #2f7d4f; --bg: #f3f7f4; --card: #fff; --text: #1d2a22;
+  --muted: #5d6f64; --border: #d6e2da; --danger: #b3261e;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #101a14; --card: #18251d; --text: #e6efe9; --muted: #9db3a5; --border: #2a3d31; --danger: #ff8a80; }
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+.top { background: var(--green); color: #fff; text-align: center; padding: 1.2rem 1rem; }
+.top h1 { margin: 0; font-size: 1.8rem; }
+.top p { margin: .25rem 0 0; opacity: .9; }
+main { max-width: 860px; margin: 0 auto; padding: 1rem; display: grid; gap: 1rem; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.2rem; }
+.card h2 { margin: 0 0 .75rem; font-size: 1.15rem; }
+.card h2 small { color: var(--muted); font-weight: 400; }
+.hint { color: var(--muted); font-size: .9rem; margin: .25rem 0 .75rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .6rem; margin: .5rem 0; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  padding: .65rem 1.1rem; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--card); color: var(--text); font: inherit; cursor: pointer; min-height: 44px;
+}
+.btn:hover { border-color: var(--green); }
+.btn.primary { background: var(--green); border-color: var(--green); color: #fff; }
+.btn.primary:hover { filter: brightness(1.1); }
+.btn.big { font-size: 1.05rem; padding: .75rem 1.5rem; }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.camera { margin-top: .75rem; background: #000; border-radius: 12px; overflow: hidden; }
+.camera video { width: 100%; max-height: 65vh; display: block; object-fit: cover; background: #000; }
+.camera-controls { display: flex; justify-content: center; gap: .6rem; padding: .6rem; flex-wrap: wrap; background: #222; }
+.dropzone {
+  margin-top: .75rem; border: 2px dashed var(--border); border-radius: 12px;
+  padding: 1.2rem; text-align: center; color: var(--muted); cursor: pointer;
+}
+.dropzone.over { border-color: var(--green); background: #2f7d4f18; }
+.msg { margin: .75rem 0 0; padding: .6rem .8rem; border-radius: 8px; background: #2f7d4f18; }
+.msg.error { background: #b3261e1a; color: var(--danger); }
+.photos { list-style: none; padding: 0; margin: 0 0 .5rem; display: grid; gap: .75rem; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.photos li { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; position: relative; }
+.photos img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+.photos select { width: 100%; padding: .45rem; border: 0; border-top: 1px solid var(--border); background: var(--card); color: var(--text); font: inherit; }
+.photos .remove {
+  position: absolute; top: 4px; right: 4px; width: 32px; height: 32px; border-radius: 50%;
+  border: 0; background: #000a; color: #fff; cursor: pointer; font-size: 1rem;
+}
+.status { display: flex; gap: .6rem; align-items: center; padding: .5rem 0; }
+.status.error { color: var(--danger); }
+.spinner { width: 22px; height: 22px; border: 3px solid var(--border); border-top-color: var(--green); border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.results { list-style: none; padding: 0; margin: 0; display: grid; gap: .8rem; }
+.result { border: 1px solid var(--border); border-radius: 12px; padding: .9rem; }
+.result.best { border-color: var(--green); box-shadow: 0 0 0 1px var(--green); }
+.result h3 { margin: 0; font-style: italic; font-size: 1.1rem; }
+.result .common { margin: .2rem 0; }
+.result .meta { color: var(--muted); font-size: .9rem; margin: .2rem 0; }
+.bar { height: 8px; background: var(--border); border-radius: 6px; margin: .6rem 0 .2rem; overflow: hidden; }
+.bar > span { display: block; height: 100%; background: var(--green); }
+.refs { display: flex; gap: .4rem; margin: .6rem 0; flex-wrap: wrap; }
+.refs img { width: 88px; height: 88px; object-fit: cover; border-radius: 8px; }
+.result a { color: var(--green); font-weight: 600; margin-right: 1rem; }
+footer { max-width: 860px; margin: 0 auto; padding: 1rem 1rem 2rem; color: var(--muted); font-size: .85rem; text-align: center; }
+footer a { color: var(--green); }

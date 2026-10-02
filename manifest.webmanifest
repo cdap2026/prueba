@@ -1,0 +1,12 @@
+{
+  "name": "PlantID",
+  "short_name": "PlantID",
+  "description": "Identifica plantas con la cámara o con tus fotos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f7f4",
+  "theme_color": "#2f7d4f",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

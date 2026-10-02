@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2f7d4f">
+  <title>PlantID · Identifica plantas con tu cámara</title>
+  <meta name="description" content="Toma una foto o sube imágenes y descubre qué planta es.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1><span aria-hidden="true">🌿</span> PlantID</h1>
+    <p>Identifica plantas con la cámara o con tus fotos</p>
+  </header>
+
+  <main>
+    <section class="card" aria-labelledby="t-cam">
+      <h2 id="t-cam">1. Añade fotos <small>(hasta 5)</small></h2>
+
+      <div class="actions">
+        <button id="btn-camera" class="btn primary" type="button">📷 Usar cámara</button>
+        <label class="btn" for="file-input">🖼️ Subir imágenes</label>
+        <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+      </div>
+
+      <div id="camera-box" class="camera" hidden>
+        <video id="video" playsinline muted autoplay></video>
+        <div class="camera-controls">
+          <button id="btn-switch" class="btn" type="button" title="Cambiar de cámara">🔄 Cambiar</button>
+          <button id="btn-shot" class="btn primary big" type="button">⚪ Tomar foto</button>
+          <button id="btn-close" class="btn" type="button">✖ Cerrar</button>
+        </div>
+      </div>
+
+      <div id="dropzone" class="dropzone" tabindex="0" role="button">
+        Arrastra aquí tus imágenes o haz clic para elegirlas
+      </div>
+
+      <p id="cam-msg" class="msg" role="status" hidden></p>
+    </section>
+
+    <section class="card" aria-labelledby="t-photos" id="photos-card" hidden>
+      <h2 id="t-photos">2. Revisa tus fotos</h2>
+      <p class="hint">Indica qué parte de la planta muestra cada foto: mejora la precisión.</p>
+      <ul id="photos" class="photos"></ul>
+      <div class="actions">
+        <button id="btn-identify" class="btn primary big" type="button">🔍 Identificar planta</button>
+        <button id="btn-clear" class="btn" type="button">🗑️ Vaciar</button>
+      </div>
+    </section>
+
+    <section class="card" id="results-card" aria-live="polite" hidden>
+      <h2>Resultados</h2>
+      <div id="status" class="status" hidden></div>
+      <ol id="results" class="results"></ol>
+      <p id="remaining" class="hint"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Las fotos se envían a través de nuestro servidor al servicio <a href="https://plantnet.org" target="_blank" rel="noopener">Pl@ntNet</a> solo para identificarlas y no se guardan.
+    Los resultados son orientativos: no consumas ni manipules plantas basándote únicamente en esta app.</p>
+  </footer>
+
+  <canvas id="canvas" hidden></canvas>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
